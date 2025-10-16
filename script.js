@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 安全检查 ---
     if (!gridContainer || !modal || !useLastImageBtn || !clearStorageBtn || !exportBtn || !captureArea || !creditFooterForImage || !mainTitle) {
         console.error('错误：页面缺少必要的HTML元素！');
-        alert('页面加载失败，请刷新重试！');
+        alert('ページが正しく読み込めませんでした。リフレッシュしてください。'); // 已翻译为日语
         return;
     }
 
@@ -52,12 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('wotaGridData', JSON.stringify(savedImages));
                 success = true;
             } catch (e) {
-                console.warn("存储空间已满，尝试清理旧数据...");
+                console.warn("ストレージが満杯です。古いデータを削除しようとします...", e); // 已翻译为日语
                 const indexToRemove = savedImages.findIndex(img => img !== null);
                 if (indexToRemove > -1) {
                     savedImages[indexToRemove] = null;
                 } else {
-                    alert("保存失败！这张图片实在太大了，无法存入浏览器的记忆中。");
+                    alert("保存に失敗しました！この画像はサイズが大きすぎるため、ブラウザに保存できません。"); // 已翻译为日语
                     success = true; 
                 }
             }
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     clearStorageBtn.addEventListener('click', () => {
-        if (confirm("您确定要清空所有已保存的图片吗？此操作不可撤销。")) {
+        if (confirm("保存されているすべての画像を削除しますか？この操作は取り消せません。")) { // 已翻译为日语
             localStorage.removeItem('wotaGridData');
             location.reload();
         }
@@ -161,11 +161,16 @@ document.addEventListener('DOMContentLoaded', () => {
             backgroundColor: '#ffffff', useCORS: true, scale: scale,
         }).then(canvas => {
             const link = document.createElement('a');
-            link.download = 'my-wota-life-final.png';
+            
+            // START: 这里是唯一的修改点
+            // 将下载文件名修改为日语
+            link.download = 'アイドルオタク履歴書.png';
+            // END: 修改结束
+
             link.href = canvas.toDataURL('image/png');
             link.click();
         }).catch(err => {
-            console.error('生成图片失败:', err);
+            console.error('画像生成に失敗しました:', err); // 已翻译为日语
         }).finally(() => {
             exportBtn.style.display = 'block';
             creditFooterForImage.style.display = 'none';
