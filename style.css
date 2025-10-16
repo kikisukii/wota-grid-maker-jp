@@ -1,0 +1,262 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content-scroll-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+#capture-area {
+    display: inline-block;
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 26px;
+    text-align: center;
+    color: #333;
+}
+
+h1.for-canvas {
+    font-size: 32px;
+}
+
+.canvas-spacer {
+    height: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 175px); 
+    grid-template-rows: repeat(3, 200px);
+    border: 1px solid #ddd;
+}
+
+
+.grid-cell {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container {
+    flex-grow: 1;
+    background-color: #f7f7f7;
+    position: relative;
+}
+
+.cell-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.cell-image[src=""] {
+    visibility: hidden;
+}
+
+/* START: 这里是最后的、最关键的修改点 */
+.text-container {
+    height: 45px;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 14px;
+    
+    /* 移除 Flexbox 布局 */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    
+    /* 采用最稳定可靠的 table-cell 居中方案 */
+    display: table-cell;
+    vertical-align: middle; /* 垂直居中 */
+    
+    text-align: center; /* 水平居中 */
+    border-top: 1px solid #eee;
+    padding: 2px 5px;
+    box-sizing: border-box;
+    /* 确保宽度正确 */
+    width: 175px; 
+}
+/* END: 修改结束 */
+
+
+.modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.modal-content h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.close-btn {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+    line-height: 1;
+    padding: 5px;
+    margin: -5px;
+}
+.close-btn:hover { color: #000; }
+
+.file-input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#use-last-image-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid #007bff;
+    background-color: #fff;
+    color: #007bff;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+#use-last-image-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.cropper-container {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+}
+
+#image-to-crop { display: block; max-width: 100%; }
+
+#image-to-crop[src=""] {
+    visibility: hidden;
+}
+
+#crop-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    align-self: flex-end;
+    transition: background-color 0.2s ease;
+}
+#crop-btn:hover {
+    background-color: #218838;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+#export-btn {
+    margin-top: 0;
+    padding: 12px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+#export-btn:hover {
+    background-color: #0056b3;
+}
+
+#clear-storage-btn {
+    margin-top: 0;
+    padding: 12px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #dc3545;
+    background-color: #fff;
+    color: #dc3545;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+#clear-storage-btn:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+
+.page-footer {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    line-height: 1.8;
+}
+.page-footer p { margin: 10px 0; }
+
+.page-footer a {
+    color: #555;
+    font-weight: bold;
+    text-decoration: none;
+    transition: text-decoration 0.2s ease;
+}
+.page-footer a:hover {
+    text-decoration: underline;
+}
+
+.credit-footer {
+    width: 100%;
+    margin-top: 15px;
+    padding-top: 15px;
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+    border-top: 1px solid #eee;
+    display: none;
+}

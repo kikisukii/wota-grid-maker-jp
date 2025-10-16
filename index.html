@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>アイドルオタク履歴書</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="content-scroll-wrapper">
+        <div id="capture-area">
+            <h1>アイドルオタク履歴書</h1>
+            <div class="canvas-spacer"></div>
+            <div id="grid-container" class="grid">
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">初めての推し</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">今の推し</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">初めて知ったアイドル</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">一番長く推してる</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">一番お金を使った</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">一目惚れした</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">「好きになってよかった」</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">一番影響を受けた</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">一番好きなカップリング</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">一番切ない</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">好きだったけど…</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">一番好きなグループ</div></div>
+            </div>
+            <div class="credit-footer" id="credit-footer-for-image">
+                kikisukii.github.io/wota-grid-maker ・ 哔哩哔哩干杯@キキ ・ 商業利用、営利目的、違法な用途での使用を禁止します。
+            </div>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button id="clear-storage-btn">すべての画像をリセット</button>
+        <button id="export-btn">履歴書画像を作成</button>
+    </div>
+
+    <footer class="page-footer">
+        <p><strong>謝辞</strong><br>
+            テンプレートのアイデアは、Webで流行した同様のテンプレートを参考にしました。素敵なアイデアをありがとうございます。<br>
+            ウェブサイト制作: <a href="https://x.com/Kikidaisuki_" target="_blank" rel="noopener noreferrer">@キキ</a> (ハロプロと鈴木愛理の素晴らしさが、もっと多くの人に伝わりますように！)<br>
+            技術協力: Google Gemini | ホスティング: <a href="https://github.com/kikisukii/IDOL-OTAKU-GRID-MAKER-JP-VERSION" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </p>
+        <p><strong>免責事項</strong><br>
+            1. 本サイトは非営利の個人プロジェクトです。ファンの皆様の交流と娯楽のみを目的としており、商業目的での使用はご遠慮ください。<br>
+            2. アップロードされるすべての画像コンテンツは、ユーザー自身の責任となります。ユーザーがアップロードまたは作成したコンテンツによって生じるすべての法的責任は、ユーザー本人が負うものとします。当サイトおよび開発者は、ユーザーのいかなる行為に対しても一切の責任を負いません。<br>
+            3. 著作権、肖像権、プライバシー権を侵害するコンテンツ、またはポルノや暴力など、関連法規に違反するコンテンツの作成、共有、拡散に本サイトを使用することを固く禁じます。<br>
+            4. <strong>プライバシー保護</strong>: 本サイトにおけるすべての画像処理と保存は、ユーザーのローカルブラウザ内で完結します。いかなる画像データもサーバーにアップロードされることはありません。あなたのデータはあなた自身のデバイスにのみ保存され、プライバシーの安全を保証します。
+        </p>
+    </footer>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>画像をアップロード・トリミング</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="file-input-wrapper">
+                <input type="file" id="image-input" accept="image/*">
+                <button id="use-last-image-btn" style="display: none;">前回の画像を使用</button>
+            </div>
+            <div class="cropper-container"><img id="image-to-crop"></div>
+            <button id="crop-btn">決定</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
