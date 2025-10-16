@@ -20,7 +20,7 @@ body {
 #capture-area {
     display: inline-block;
     background-color: #ffffff;
-    padding: 30px;
+    padding: 20px 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     border-radius: 8px;
 }
@@ -44,25 +44,25 @@ h1.for-canvas {
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 175px); 
-    grid-template-rows: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px); /* 总行高保持 200px 不变 */
     border: 1px solid #ddd;
 }
-
 
 .grid-cell {
     border: 1px solid #ddd;
     background-color: #fff;
     cursor: pointer;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
 }
 
+/* START: 这里是主要的修改点 1 */
 .image-container {
-    flex-grow: 1;
+    height: 165px; /* 高度从 155px 增加到 165px */
     background-color: #f7f7f7;
     position: relative;
 }
+/* END: 修改结束 */
+
 
 .cell-image {
     width: 100%;
@@ -74,29 +74,25 @@ h1.for-canvas {
     visibility: hidden;
 }
 
-/* START: 这里是最后的、最关键的修改点 */
+/* START: 这里是主要的修改点 2 */
 .text-container {
-    height: 45px;
-    flex-shrink: 0;
+    height: 35px; /* 将高度从 45px 减少到 35px */
     background-color: #ffffff;
     color: #000000;
-    font-size: 14px;
+    font-size: 14px; /* 字体大小保持 14px 不变 */
     
-    /* 移除 Flexbox 布局 */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    
-    /* 采用最稳定可靠的 table-cell 居中方案 */
     display: table-cell;
-    vertical-align: middle; /* 垂直居中 */
+    vertical-align: middle;
     
-    text-align: center; /* 水平居中 */
+    text-align: center;
     border-top: 1px solid #eee;
     padding: 2px 5px;
     box-sizing: border-box;
-    /* 确保宽度正确 */
     width: 175px; 
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /* END: 修改结束 */
 
