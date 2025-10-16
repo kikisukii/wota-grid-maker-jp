@@ -4,7 +4,7 @@
 
 このツールは、「アイドルオタク履歴書」のシェア画像をオンラインで作成するためのジェネレーターです。
 
-**サイトURL:** [https://kikisukii.github.io/idol-otaku-grid-maker-jp-version/](https://kikisukii.github.io/idol-otaku-grid-maker-jp-version/)
+**サイトURL:** [https://kikisukii.github.io/wota-grid-maker-jp/](https://kikisukii.github.io/wota-grid-maker-jp/)
 
 または、ソースコードをダウンロードして、ローカル環境で `index.html` を開いて実行することも可能です。
 
